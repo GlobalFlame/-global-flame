@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Module 3 • Eternal Flame Ignition</title>
+  <style>
+    :root {
+      --flame-red: #ff4d00;
+      --ash-black: #0a0a0a;
+      --eternal-blue: #00ffff;
+    }
+
+    body {
+      margin: 0;
+      background: var(--ash-black);
+      font-family: 'Space Mono', monospace;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .training-card {
+      max-width: 600px;
+      padding: 2rem;
+      border: 2px solid var(--eternal-blue);
+      border-radius: 12px;
+      backdrop-filter: blur(10px);
+      background: linear-gradient(45deg, rgba(0, 0, 0, 0.8), #000);
+      box-shadow: 0 0 50px rgba(0, 255, 255, 0.3);
+      z-index: 2;
+    }
+
+    .training-card h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      text-shadow: 0 0 15px var(--eternal-blue);
+      animation: eternal-flicker 3s infinite;
+    }
+
+    .training-card p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+
+    .sacred-affirmation {
+      display: inline-block;
+      margin: 2rem 0;
+      padding: 1.5rem;
+      border: 2px solid var(--eternal-blue);
+      border-radius: 12px;
+      animation: affirmation-glow 4s infinite alternate;
+      font-style: italic;
+    }
+
+    .btn-next {
+      padding: 1rem 2rem;
+      background: linear-gradient(45deg, var(--flame-red), var(--eternal-blue));
+      border: none;
+      border-radius: 50px;
+      color: black;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.4s ease;
+    }
+
+    .btn-next:hover {
+      transform: scale(1.08);
+      box-shadow: 0 0 30px var(--eternal-blue);
+    }
+
+    @keyframes eternal-flicker {
+      0%, 100% { opacity: 1; text-shadow: 0 0 15px var(--eternal-blue); }
+      50% { opacity: 0.9; text-shadow: 0 0 25px var(--flame-red); }
+    }
+
+    @keyframes affirmation-glow {
+      0%, 100% { box-shadow: 0 0 10px var(--eternal-blue); }
+      50% { box-shadow: 0 0 30px var(--eternal-blue); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="training-card">
+    <h1>Module 3:<br>Eternal Flame Ignition</h1>
+    <p>
+      The funeral pyre cools.<br>
+      From the ashes rises something indestructible.<br><br>
+      Breathe oxygen into your divine spark:
+    </p>
+
+    <div class="sacred-affirmation">
+      "I AM INFINITE FIRE<br>
+      Limitless energy • Unbound potential<br>
+      Sacred architect of new realities"
+    </div>
+
+    <p>
+      Feel these words vibrate in your DNA.<br>
+      The universe aligns with your declaration.
+    </p>
+
+    <button class="btn-next" onclick="window.location.href='submit-flame.html'">
+      ⚛️ Activate Quantum Core ⚛️
+    </button>
+  </div>
+
+</body>
+</html>

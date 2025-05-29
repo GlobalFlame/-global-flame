@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Global Flame • Initiation Portal</title>
+
+  <!-- 🔥 STYLES -->
+  <style>
+    :root {
+      --flame-red: #ff4d00;
+      --phoenix-gold: #ffd700;
+      --heartbeat: #ff1a8c;
+      --void-black: #0a0a0a;
+    }
+
+    body {
+      margin: 0;
+      background: radial-gradient(circle at center, var(--void-black), #1a1a1a 100%);
+      color: white;
+      font-family: 'Space Mono', monospace;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      overflow: hidden;
+      position: relative;
+      flex-direction: column;
+    }
+
+    .welcome-card {
+      max-width: 600px;
+      padding: 2rem;
+      border: 2px solid var(--flame-red);
+      border-radius: 12px;
+      background: rgba(10, 10, 10, 0.85);
+      box-shadow: 0 0 25px var(--phoenix-gold);
+      backdrop-filter: blur(6px);
+      animation: fadeIn 1s ease-out;
+      z-index: 1;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      text-shadow: 0 0 12px var(--phoenix-gold);
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    #flame-selector {
+      margin-bottom: 1.5rem;
+      padding: 0.7rem;
+      font-size: 1rem;
+      border-radius: 8px;
+      border: 1px solid var(--phoenix-gold);
+      background: var(--void-black);
+      color: var(--phoenix-gold);
+    }
+
+    .btn-next {
+      padding: 1rem 2rem;
+      background: linear-gradient(45deg, var(--flame-red), var(--phoenix-gold));
+      border: none;
+      border-radius: 50px;
+      color: #000;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .btn-next:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px var(--phoenix-gold);
+    }
+
+    .warning-banner {
+      width: 100%;
+      background: var(--phoenix-gold);
+      color: var(--void-black);
+      padding: 1rem;
+      font-weight: bold;
+      text-align: center;
+      font-size: 1rem;
+      box-shadow: 0 0 20px var(--heartbeat);
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 999;
+    }
+
+    .feedback {
+      position: fixed;
+      bottom: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255,255,255,0.1);
+      color: white;
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      font-family: 'Space Mono', monospace;
+      opacity: 1;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      z-index: 9999;
+    }
+
+    .feedback.exit { opacity: 0; transform: translateX(-50%) translateY(20px); }
+    .feedback.error   { border: 2px solid var(--flame-red); }
+    .feedback.warning { border: 2px solid var(--phoenix-gold); }
+    .feedback.success { border: 2px solid #00ff00; }
+  </style>
+</head>
+<body>
+
+  <!-- 🔒 CHARTER ENFORCEMENT -->
+  <script>
+    if (localStorage.getItem('charterAccepted') !== 'true') {
+      window.location.href = 'sanctuary-charter.html';
+    }
+  </script>
+
+  <!-- 🔥 KILL SWITCH -->
+  <script>
+    async function checkSystemStatus() {
+      try {
+        const res = await fetch('system-status.flag');
+        const text = await res.text();
+        if (text.trim() !== 'active') {
+          document.body.innerHTML = `
+            <div style="text-align:center; padding:3rem; font-family:'Space Mono', monospace;">
+              <h2 style="color:#ff4d00; font-size:2.2rem;">🔥 System in Sacred Hibernation 🔥</h2>
+              <p style="color:#ffd700;">Flame Keepers are restoring balance.<br>Please return once the portal reopens.</p>
+            </div>
+          `;
+        }
+      } catch (err) {
+        console.log('Status check failed:', err);
+      }
+    }
+    checkSystemStatus();
+  </script>
+
+  <!-- ⚠️ WARNING BAR -->
+  <script>
+    async function checkForWarning() {
+      try {
+        const res = await fetch('shutdown-warning.flag');
+        if (res.status === 200) {
+          const banner = document.createElement('div');
+          banner.className = 'warning-banner';
+          banner.innerText = "⚠️ Sacred Warning: The system may enter hibernation soon.";
+          document.body.prepend(banner);
+        }
+      } catch (e) {
+        console.log('Warning check failed:', e);
+      }
+    }
+    checkForWarning();
+  </script>
+
+  <!-- 🔥 MAIN CARD -->
+  <div class="welcome-card">
+    <h1>Global Flame</h1>
+    <p>Choose your sacred aura.</p>
+
+    <select id="flame-selector">
+      <option value="#ff4d00">Inferno Red</option>
+      <option value="#ffd700" selected>Phoenix Gold</option>
+      <option value="#00ffff">Nebula Blue</option>
+      <option value="#9d00ff">Void Purple</option>
+    </select>
+
+    <button id="beginBtn" class="btn-next">🔥 Ignite Sacred 🔥</button>
+  </div>
+
+  <!-- 💠 SCRIPT ZONE -->
+  <script>
+    // Aura sync
+    document.getElementById('flame-selector').addEventListener('change', function(e) {
+      document.documentElement.style.setProperty('--flame-red', e.target.value);
+    });
+
+    // Ignite button
+    document.getElementById('beginBtn').onclick = () => {
+      window.location.href = 'dashboard.html';
+    };
+  </script>
+
+  <!-- ⛓ LINKED SCRIPTS -->
+  <script src="config.js"></script>
+  <script src="utils.js"></script>
+  <script src="phaseManager.js"></script>
+  <script src="moneyEngine.js"></script>
+  <script src="referral.js"></script>
+  <script src="referralLogic.js"></script>
+</body>
+</html>

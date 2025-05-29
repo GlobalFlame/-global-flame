@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Flamethrower Dashboard</title>
+
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0a0a0a;
+      color: white;
+      padding: 2rem;
+    }
+    .dashboard {
+      background: #1a1a1a;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 0 20px #ff4d00;
+      max-width: 500px;
+      margin: auto;
+    }
+    .dashboard h2 {
+      margin-top: 0;
+    }
+    .highlight {
+      color: #ffd700;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="dashboard">
+    <h2>🔥 Flamethrower Dashboard</h2>
+    <div id="dashboardContent">Loading your fire...</div>
+  </div>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyAM3yWkVlD_1Thq2JSHJkjS1U00wZSlR1s",
+      authDomain: "global-flame.firebaseapp.com",
+      projectId: "global-flame",
+      databaseURL: "https://global-flame-default-rtdb.firebaseio.com",
+      storageBucket: "global-flame.appspot.com",
+      messagingSenderId: "1307844305525",
+      appId: "1:1307844305525:web:444fc8d56b4f1c1a75863c"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
+
+    const warriorId = "lemuel001"; // You can change this to another user later
+    const ref = db.ref("warriors/" + warriorId);
+
+    ref.once("value").then(snapshot => {
+      const data = snapshot.val();
+      const html = `
+        <p><span class="highlight">${data.name}</span> — Tier: <span class="highlight">${data.tier}%</span></p>
+        <p>Total Tips: $${data.totalTips}</p>
+        <p>Product Sales: $${data.productSales}</p>
+        <p>Referral Earnings: $${data.referralEarnings}</p>
+        <p><strong>Total Earned: $${data.totalEarned}</strong></p>
+        <p style="color:red;">Payout Pending: $${data.payoutPending}</p>
+        <p>Last Paid: ${new Date(data.lastPaid).toLocaleDateString()}</p>
+      `;
+      document.getElementById("dashboardContent").innerHTML = html;
+    }).catch(err => {
+      document.getElementById("dashboardContent").innerHTML = "Error: " + err.message;
+    });
+  </script>
+</body>
+</html>

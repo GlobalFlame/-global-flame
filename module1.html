@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Global Flame • Tier Upgrade</title>
+  <style>
+    :root {
+      --flame-red: #ff4d00;
+      --phoenix-gold: #ffd700;
+      --void-black: #0a0a0a;
+      --card-bg: rgba(10,10,10,0.85);
+    }
+    body {
+      margin: 0;
+      background: radial-gradient(circle at center, var(--void-black), #1a1a1a 100%);
+      color: white;
+      font-family: 'Space Mono', monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      text-shadow: 0 0 8px var(--phoenix-gold);
+    }
+    .tiers {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+      gap: 1rem;
+      width: 100%;
+      max-width: 800px;
+      margin-bottom: 2rem;
+    }
+    .tier-card {
+      background: var(--card-bg);
+      border: 2px solid var(--phoenix-gold);
+      border-radius: 12px;
+      padding: 1rem;
+      text-align: center;
+      box-shadow: 0 0 20px var(--phoenix-gold);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .tier-card h2 {
+      margin: 0.5rem 0;
+      font-size: 1.4rem;
+      color: var(--phoenix-gold);
+    }
+    .tier-card p {
+      flex-grow: 1;
+      font-size: 0.95rem;
+      margin: 0.5rem 0 1rem;
+    }
+    .tier-card button {
+      padding: 0.7rem 1rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      background: linear-gradient(45deg, var(--flame-red), var(--phoenix-gold));
+      color: #000;
+      transition: transform 0.2s ease;
+    }
+    .tier-card button:hover {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Choose Your Tier</h1>
+  <div class="tiers">
+    <div class="tier-card" data-tier="Basic">
+      <h2>Basic</h2>
+      <p>🔓 Free access<br>• Phase 1 content only<br>• 90-day journey start</p>
+      <button>Select Basic</button>
+    </div>
+    <div class="tier-card" data-tier="Bronze">
+      <h2>Bronze</h2>
+      <p>💥 $5 / week<br>• Early module access<br>• HOT METER unlocked</p>
+      <button>Select Bronze</button>
+    </div>
+    <div class="tier-card" data-tier="Silver">
+      <h2>Silver</h2>
+      <p>✨ $10 / week<br>• All modules & dashboard<br>• Referral bonus enabled</p>
+      <button>Select Silver</button>
+    </div>
+    <div class="tier-card" data-tier="Gold">
+      <h2>Gold</h2>
+      <p>👑 $20 / week<br>• Priority support<br>• Premium analytics</p>
+      <button>Select Gold</button>
+    </div>
+  </div>
+
+  <script>
+    document.querySelectorAll('.tier-card button').forEach(btn => {
+      btn.addEventListener('click', e => {
+        const tier = e.currentTarget.closest('.tier-card').dataset.tier;
+        localStorage.setItem('selectedTier', tier);
+        // go to Dashboard
+        window.location.href = 'dashboard.html';
+      });
+    });
+  </script>
+
+</body>
+</html>

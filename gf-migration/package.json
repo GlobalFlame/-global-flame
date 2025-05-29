@@ -1,0 +1,19 @@
+{
+  "name": "gf-migration",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@azure/cosmos": "^4.4.1",
+    "@google-cloud/firestore": "^7.11.1",
+    "@google-cloud/storage": "^7.16.0",
+    "applicationinsights": "^3.7.0",
+    "p-limit": "^6.2.0"
+  },
+  "description": ""
+}

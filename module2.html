@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Module 2 • Funeral of the False Self</title>
+  <style>
+    :root {
+      --flame-red: #ff4d00;
+      --ash-black: #0a0a0a;
+      --phoenix-gold: #ffd700;
+    }
+
+    body {
+      margin: 0;
+      background: var(--ash-black);
+      color: white;
+      font-family: 'Space Mono', monospace;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    .training-card {
+      max-width: 600px;
+      padding: 2rem;
+      border: 2px solid var(--phoenix-gold);
+      border-radius: 12px;
+      background: rgba(10,10,10,0.9);
+      box-shadow: 0 0 30px var(--phoenix-gold);
+    }
+
+    .training-card h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      text-shadow: 0 0 15px var(--phoenix-gold);
+    }
+
+    .training-card p {
+      font-size: 1.2rem;
+      line-height: 1.5;
+      margin-bottom: 2rem;
+    }
+
+    .btn-next {
+      padding: 1rem 2rem;
+      background: linear-gradient(45deg, var(--flame-red), var(--phoenix-gold));
+      border: none;
+      border-radius: 50px;
+      color: black;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .btn-next:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px var(--phoenix-gold);
+    }
+  </style>
+</head>
+<body>
+  <div class="training-card">
+    <h1>Module 2:<br>Funeral of the False Self</h1>
+    <p>
+      You’ve crossed the threshold.<br>
+      The ember now becomes sacred flame.<br><br>
+      Lay down gently that which cannot pass.<br>
+      You are not who you were.<br>
+      You are becoming who you were born to be.
+    </p>
+    <button class="btn-next" onclick="window.location.href='module3.html'">
+      🔥 Rise From Ashes 🔥
+    </button>
+  </div>
+</body>
+</html>

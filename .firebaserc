@@ -1,0 +1,8 @@
+{
+  "projects": {
+    "prod": "global-flame",
+    "p": "global-flame"
+  },
+  "targets": {},
+  "etags": {}
+}

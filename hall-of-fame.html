@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>🔥 Hall of Flame</title>
+
+  <!-- Firebase SDK -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+    import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js";
+
+    // 🔥 Your Firebase Config
+    const firebaseConfig = {
+      apiKey: "AIzaSyAM3yWkVlD_1Thq2JSHJkjS1U00wZSlR1s",
+      authDomain: "global-flame.firebaseapp.com",
+      projectId: "global-flame",
+      storageBucket: "global-flame.appspot.com",
+      messagingSenderId: "1307844305525",
+      appId: "1:1307844305525:web:444fc8d56b4f1c1a75863c"
+    };
+
+    // 🔥 Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+
+    // 🔥 Load Top 10 Flamethrowers by Tier
+    const topRef = ref(db, 'warriors');
+    onValue(topRef, (snapshot) => {
+      const data = snapshot.val() || {};
+      const top = Object.values(data).sort((a, b) => b.tier - a.tier).slice(0, 10);
+
+      const container = document.getElementById("hall");
+      container.innerHTML = top.map(w =>
+        `<div><strong>${w.name || w.soulName}</strong> — Tier: ${w.tier}%</div>`
+      ).join('');
+    });
+  </script>
+</head>
+<body>
+  <h1>🔥 Hall of Flame</h1>
+  <div id="hall">Loading top Flamethrowers...</div>
+</body>
+</html>

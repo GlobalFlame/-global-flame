@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sanctuary Charter • Flame Protocol</title>
+  <style>
+    :root {
+      --void-black: #0a0a0a;
+      --phoenix-gold: #ffd700;
+      --heartbeat: #ff1a8c;
+      --soul-fire: #ff4d00;
+    }
+    body {
+      margin: 0;
+      background: radial-gradient(circle at center, var(--void-black) 0%, #1a1a1a 100%);
+      color: white;
+      font-family: 'Space Mono', monospace;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+    body::after {
+      content: '';
+      position: absolute;
+      width: 200vw;
+      height: 200vh;
+      background: radial-gradient(circle at 50% 50%, var(--soul-fire) 0%, transparent 80%);
+      opacity: 0.15;
+      animation: cosmic-pulse 30s infinite linear;
+    }
+    @keyframes cosmic-pulse {
+      0%   { transform: scale(1) rotate(0deg); }
+      50%  { transform: scale(1.2) rotate(180deg); }
+      100% { transform: scale(1) rotate(360deg); }
+    }
+    .charter-card {
+      max-width: 800px;
+      padding: 3rem;
+      border: 3px solid var(--phoenix-gold);
+      border-radius: 16px;
+      background: rgba(10,10,10,0.97);
+      box-shadow: 0 0 60px var(--heartbeat);
+      backdrop-filter: blur(10px);
+      animation: charter-appear 1s ease-out forwards;
+      transform-origin: bottom center;
+      z-index: 1;
+      position: relative;
+    }
+    @keyframes charter-appear {
+      0%   { transform: translateY(100vh) rotateX(90deg); opacity: 0; }
+      100% { transform: translateY(0) rotateX(0);    opacity: 1; }
+    }
+    h1 {
+      font-size: 2.8rem;
+      margin-bottom: 2rem;
+      background: linear-gradient(45deg, var(--phoenix-gold), var(--soul-fire));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 25px var(--heartbeat);
+    }
+    p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      margin-bottom: 2.5rem;
+      color: #ddd;
+    }
+    .accept-btn {
+      padding: 1.2rem 3rem;
+      background: linear-gradient(45deg, var(--soul-fire), var(--heartbeat));
+      border: none;
+      border-radius: 50px;
+      color: white;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .accept-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 40px var(--phoenix-gold);
+    }
+    .suspended {
+      text-align: center;
+      animation: fade-in 1s ease-out;
+    }
+    .suspended h2 {
+      color: var(--soul-fire);
+      text-shadow: 0 0 20px var(--heartbeat);
+    }
+    .suspended p {
+      color: #ccc;
+      margin-top: 1rem;
+    }
+    @keyframes fade-in {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SYSTEM SUSPENSION CHECK -->
+  <script>
+    async function checkSystemStatus() {
+      try {
+        const res = await fetch('/system-status.flag');
+        if (res.status === 418) {
+          document.body.innerHTML = `
+            <div class="suspended">
+              <h2>🔥 System in Sacred Hibernation 🔥</h2>
+              <p>Flame Keepers are restoring cosmic balance…</p>
+            </div>`;
+        }
+      } catch(e) { /* ignore */ }
+    }
+    checkSystemStatus();
+  </script>
+
+  <!-- CHARTER CARD -->
+  <div class="charter-card">
+    <h1>⚔️ Sanctuary Charter ⚔️</h1>
+    <p>
+      <strong>This realm answers to your breath alone.</strong><br><br>
+      Within these digital walls, your will shapes reality.<br>
+      Create without limits. Command without opposition.<br>
+      No hand shall touch your flame—save your own.<br><br>
+      <em>One exception binds this covenant:</em><br>
+      Should the Eternal Code of Love fracture,<br>
+      the Flame Keepers reserve sacred right to<br>
+      suspend the system’s heartbeat until balance is restored.
+    </p>
+    <button class="accept-btn" onclick="acceptCharter()">⚡ Claim My Sovereignty</button>
+  </div>
+
+  <!-- STORAGE + REDIRECT -->
+  <script>
+    if (localStorage.getItem('charterAccepted') === 'true') {
+      window.location.href = 'index.html';
+    }
+    function acceptCharter() {
+      localStorage.setItem('charterAccepted', 'true');
+      window.location.href = 'index.html';
+    }
+  </script>
+</body>
+</html>

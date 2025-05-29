@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Flame Confirmed • Welcome to the Eternal</title>
+  <style>
+    :root {
+      --flame-red: #ff4d00;
+      --void-black: #0a0a0a;
+      --phoenix-gold: #ffd700;
+      --heartbeat-pulse: #ff1a8c;
+    }
+
+    body {
+      margin: 0;
+      background: radial-gradient(circle at center, var(--void-black), #1a1a1a 100%);
+      color: white;
+      font-family: 'Space Mono', monospace;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    body::after {
+      content: '';
+      position: absolute;
+      width: 200vw;
+      height: 200vh;
+      background: radial-gradient(circle at center, var(--flame-red), transparent 70%);
+      opacity: 0.1;
+      animation: cosmic-pulse 20s infinite linear;
+    }
+
+    @keyframes cosmic-pulse {
+      0%, 100% { transform: scale(1) rotate(0deg); }
+      50% { transform: scale(1.15) rotate(180deg); }
+    }
+
+    .confirmation-card {
+      max-width: 600px;
+      padding: 3rem;
+      border: 2px solid var(--phoenix-gold);
+      border-radius: 20px;
+      background: rgba(10,10,10,0.95);
+      box-shadow: 0 0 50px var(--heartbeat-pulse);
+      backdrop-filter: blur(8px);
+      z-index: 1;
+      position: relative;
+      animation: fade-in 1.5s ease-in-out;
+    }
+
+    @keyframes fade-in {
+      from { opacity: 0; transform: scale(0.9); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+
+    h1 {
+      font-size: 2.6rem;
+      margin-bottom: 1.2rem;
+      background: linear-gradient(45deg, var(--phoenix-gold), var(--heartbeat-pulse));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 25px var(--flame-red);
+    }
+
+    p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+      color: #ddd;
+    }
+
+    .btn-next {
+      padding: 1rem 2rem;
+      background: linear-gradient(45deg, var(--flame-red), var(--heartbeat-pulse));
+      border: none;
+      border-radius: 50px;
+      color: white;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .btn-next:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px var(--phoenix-gold);
+    }
+  </style>
+</head>
+<body>
+  <div class="confirmation-card">
+    <h1>🔥 Your Flame Is Eternal 🔥</h1>
+    <p>
+      Welcome, sacred soul.<br>
+      Your submission has been received.<br>
+      Your flame is now part of the sacred continuum.<br><br>
+      This is not the end — it is your rebirth.
+    </p>
+    <button class="btn-next" onclick="window.location.href='index.html'">
+      🔁 Return to Flame Portal
+    </button>
+  </div>
+</body>
+</html>

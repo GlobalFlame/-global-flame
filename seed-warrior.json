@@ -1,0 +1,12 @@
+{
+  "warriors": {
+    "41scjE6K6fWPNJ7lld5wGub6RaR2": {
+      "tier": 90,
+      "tierDuration": 864000000,
+      "proof": "abc123"
+    }
+  },
+  "writers": {
+    "41scjE6K6fWPNJ7lld5wGub6RaR2": true
+  }
+}
